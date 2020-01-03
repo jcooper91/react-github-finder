@@ -1,19 +1,22 @@
 import React, {useState, useContext} from "react"
-import PropTypes from 'prop-types'
 import GithubContext from '../../context/github/githubContext'
+import AlertContext from '../../context/alert/alertContext'
 
 // destructrred from props
-const Search = ({ setAlert }) => {
+const Search = () => {
 
 const githubContext = useContext(GithubContext)
+const alertContext = useContext(AlertContext)
 
+// @param1 name of state you want to change
+// @Param2 method that will update that state
 const [text, setText] = useState('')
 
 const onChange = e => setText(e.target.value)
 
 const onSubmit = e => {
     if(text === '') {
-      setAlert('Please enter something...', 'light')
+      alertContext.setAlert('Please enter something...', 'light')
     }
     e.preventDefault()
     githubContext.searchUsers(text)
@@ -22,7 +25,7 @@ const onSubmit = e => {
   
     return (
       <div>
-        <form onSubmit={onSubmit} className="form">
+        <form onSubmit={onSubmit} className="form"> 
         <input
             type='text'
             name='text'
@@ -42,7 +45,7 @@ const onSubmit = e => {
             </button>
         )}
       </div>
-    );
+    )
   }
 
 export default Search

@@ -23,7 +23,7 @@ const GithubState = props => {
     // we then have to pass a type back to our reducer
 
     // reducer - used for storing state
-    // @para2 = the initial state (can be a function, lie in our case above)
+    // @para2 = the initial state (can be a function, like in our case above)
     const [state, dispatch] = useReducer(GithubReducer, initialState)
 
     const searchUsers = async (text) => {
