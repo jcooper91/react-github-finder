@@ -34,8 +34,11 @@ const GithubState = props => {
     // we then have to pass a type back to our reducer
 
     // reducer - used for storing state
-    // @para2 = the initial state (can be a function, like in our case above)
-    const [state, dispatch] = useReducer(GithubReducer, initialState)
+    // @param1 of useReducer is a function which accepts two paraments, which are state & action...
+    // This is the function within githubReducer.js... 
+    // And these parameters are sent to our reducer via the dispatch function where we send type (state) and payload (action)... 
+    // useReducer returns two
+    const [state, dispatch] = useReducer(GithubReducer, initialState) // @1 reducer/function itself @2 initial state
 
     const searchUsers = async (text) => {
           setLoading()

@@ -10,17 +10,19 @@ const alertContext = useContext(AlertContext)
 
 // @param1 name of state you want to change
 // @Param2 method that will update that state
+// text in this case is the value with value={text} in our input. This could be anything
 const [text, setText] = useState('')
 
 const onChange = e => setText(e.target.value)
 
 const onSubmit = e => {
     if(text === '') {
+      e.preventDefault()
       alertContext.setAlert('Please enter something...', 'light')
     }
-    e.preventDefault()
-    githubContext.searchUsers(text)
-    setText('')
+      e.preventDefault()
+      githubContext.searchUsers(text)
+      setText('')
   }
   
     return (
